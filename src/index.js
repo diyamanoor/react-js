@@ -12,6 +12,11 @@ import NewComp from './Components/NewComp';
 //lifecycle component
 import LifecycleComp from './Components/LifecycleComp';
 import SeasonDisplay from './SeasonDisplay';
+import unsplash from './api/unsplash';
+//import SearchBar from '.Components/SearchBar';
+//import ImageList from '.Components/ImageList';
+import SearchBar from './Components/SearchBar';
+import ImageList from './Components/ImageList';
 
  
 
@@ -41,7 +46,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 class App extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { lat: null };
+    this.state = { 
+      lat: null,
+      images: [] 
+     }; 
 
     window.navigator.geolocation.getCurrentPosition(
       (position)=>{
@@ -51,6 +59,13 @@ class App extends React.Component{
       (err)=> console.log(err) 
     );
   }
+  onSearchSubmit = async term => {
+    const response = await unsplash.get('/search/photos', {
+      params: { query: term }
+    });
+
+    this.setState({ images: response.data.results });
+  };
   
 
  
@@ -70,6 +85,12 @@ class App extends React.Component{
           <p/>
           <p/>
           <SeasonDisplay lat={this.state.lat}/>
+          <p/>
+          <p/>
+          <div className="ui container" style={{ marginTop: '10px' }}>
+            <SearchBar onSubmit={this.onSearchSubmit} />
+            <ImageList images={this.state.images} />
+          </div>
           
 
       </div>
