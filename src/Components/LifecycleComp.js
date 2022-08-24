@@ -8,7 +8,7 @@ class LifecycleComp extends React.Component {
    }    
    render() {  
       return (  
-         <div>  
+         <div style={{ textDecoration:'none',padding:'5px', margin:'2px'}}>  
              <h1>ReactJS component's Lifecycle</h1>  
              <h3>This is a  {this.state.hello}</h3>  
              <button onClick = {this.changeState}>Click Here!</button>          

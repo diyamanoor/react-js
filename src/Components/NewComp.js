@@ -19,7 +19,7 @@ class NewComp extends Component{
     }
     render(){
         return(
-            <div>
+            <div style={{ textDecoration:'none',padding:'5px', margin:'2px'}}>
                 <p/>
                 <div style={this.styles}>
                     {this.state.message}

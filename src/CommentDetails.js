@@ -2,8 +2,9 @@ import React from "react";
 //import faker from 'faker';
 
 const CommentDetails = props => {
+    
     return (
-        <div className="comment">
+        <div className="comment" style={{ textDecoration:'none',padding:'5px', margin:'2px'}} >
             {/* <a href="/" className="avatar">
                 <img alt="avatar" src={faker.image.avatar()} />
             </a> */}
